@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover - Reece Johnson</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F0;
+            --text-color: #333333;
+            --accent-color: #2E5D4B;
+            --accent-light: #3B7A62;
+            --border-color: #D3D3D3;
+            --umd-maroon: #7A0019;
+            --umd-gold: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--accent-color), #264D3E);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 65px;
+            position: relative;
+            transition: all 0.4s ease;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+            font-size: 3rem;
+            font-weight: 200;
+            line-height: 1;
+            position: relative;
+            color: var(--bg-color);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 2px rgba(0, 0, 0, 0.12),
+                -1px -1px 1px rgba(255, 255, 255, 0.08);
+            background: none;
+            padding: 0;
+            letter-spacing: -1px;
+            opacity: 0.85;
+            filter: brightness(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        nav a {
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background: var(--accent-light);
+        }
+
+        /* Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .umd-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .umd-image:hover {
+            transform: scale(1.02);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(45deg, var(--accent-light), var(--accent-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                "a1 a2 a3"
+                "a4 center a5"
+                "a6 a7 a8";
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-card:nth-child(1) { grid-area: a1; }
+        .experience-card:nth-child(2) { grid-area: a2; }
+        .experience-card:nth-child(3) { grid-area: a3; }
+        .experience-card:nth-child(4) { grid-area: a4; }
+        .experience-card:nth-child(5) { grid-area: a5; }
+        .experience-card:nth-child(6) { grid-area: a6; }
+        .experience-card:nth-child(7) { grid-area: a7; }
+        .experience-card:nth-child(8) { grid-area: a8; }
+
+        .center-image {
+            grid-area: center;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .center-image:hover {
+            transform: scale(1.02);
+        }
+
+        .experience-card {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .experience-card p {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section-image:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <div class="logo"><div class="logo-text">RJ</div></div>
+                <span class="name">Reece Johnson</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="hobbies.html">Hobbies</a>
+                <a href="resume.html">Resume</a>
+                <a href="career.html">Career</a>
+                <a href="discover.html">Discover</a>
+                <a href="game.html">Game</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="section">
+            <h2>Why I Chose UMD</h2>
+            <img src="images/umd.png" alt="University of Minnesota Duluth Campus" class="umd-image">
+            <div class="highlight-box">
+                <p>My decision to choose the University of Minnesota Duluth was an easy one, because it's the kind of place where I can really see myself growing—both in the classroom and outside of it. The Business Analytics program caught my attention right away because it blends my interest in business with my love for problem-solving and data. I like that UMD focuses on hands-on learning, so I'll get real experience working with numbers, trends, and strategies that make an impact.</p>
+                <p>What really makes UMD stand out for me is the atmosphere. The campus has this close-knit, welcoming vibe, and being surrounded by the natural beauty of Duluth makes it easy to stay balanced and inspired. Between the great professors, the supportive community, and the chance to study something I'm genuinely passionate about, choosing UMD just felt right.</p>
+            </div>
+            <p>The University's commitment to innovation and hands-on learning experiences perfectly aligned with my academic goals. The smaller class sizes and direct access to professors were major factors in my decision, as they ensure more personalized attention and better learning opportunities.</p>
+            <p>Additionally, UMD's strong connections with industry partners and excellent career placement rates made it an ideal choice for building my future career path.</p>
+        </div>
+
+        <div class="section">
+            <h2>Discovering Duluth</h2>
+            <p>Duluth offers an unparalleled blend of urban amenities and natural beauty that makes it an exceptional place to live and study:</p>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <h3>Natural Beauty</h3>
+                    <p>The stunning Lake Superior shoreline, hiking trails, and scenic parks provide endless opportunities for outdoor activities and recreation. Walking along the lakewalk at sunrise, you'll experience the peaceful sound of waves lapping against the shore while watching ships enter the harbor. The surrounding wilderness areas offer everything from easy nature walks to challenging hiking trails, making it perfect for both casual strolls and serious adventures.</p>
+                    <img src="images/lake.jpg" alt="Lake Superior shoreline" class="section-image">
+                </div>
+                <div class="experience-card">
+                    <h3>City Life</h3>
+                    <p>A vibrant arts scene, diverse dining options, and a rich cultural heritage make Duluth a dynamic city for students. The historic downtown area blends modern amenities with charming architecture, while the local restaurants serve everything from fresh Lake Superior fish to international cuisine. The city's many festivals, museums, and theaters ensure there's always something exciting happening, creating the perfect balance of entertainment and culture.</p>
+                    <img src="images/city.jpg" alt="Duluth cityscape" class="section-image">
+                </div>
+                <div class="experience-card">
+                    <h3>Seasonal Activities</h3>
+                    <p>From summer water sports to winter skiing at Spirit Mountain, every season brings new adventures. In summer, the trails come alive with hikers and mountain bikers, while fall paints the hillsides in brilliant colors. Winter transforms the landscape into a snowy playground for skiing and snowboarding, and spring brings the excitement of watching the lake ice break up and nature come back to life.</p>
+                    <img src="images/biking.jpg" alt="Biking in Duluth" class="section-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Why Choose Duluth?</h2>
+            <div class="video-container">
+                <video controls width="100%">
+                    <source src="videos/duluth.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>Experience the beauty and charm of Duluth through this captivating video showcasing what makes our city special.</p>
+        </div>
+
+        <div class="section">
+            <h2>Campus Highlights & Personal Experiences</h2>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <h3>Academic Excellence</h3>
+                    <p>Engaging classes with dedicated professors who bring real-world experience into the classroom. The faculty's commitment to student success creates an environment where questions are encouraged and individual attention is the norm. Through interactive lectures, hands-on labs, and real-world projects, learning becomes an immersive experience.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Campus Community</h3>
+                    <p>A welcoming environment where students from diverse backgrounds come together to learn and grow. The strong sense of community at UMD makes it easy to find study groups, join clubs, and make lasting friendships. Campus events and traditions help create a home away from home for all students.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Research Opportunities</h3>
+                    <p>Access to cutting-edge research projects and state-of-the-art facilities. Students have the chance to work alongside faculty on meaningful research that impacts real-world challenges. These experiences provide valuable skills and often lead to publications and conference presentations.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Student Life</h3>
+                    <p>Vibrant campus activities, clubs, and events create a rich college experience. From student organizations and intramural sports to campus traditions and cultural celebrations, there's always something happening. These activities help build leadership skills and create lasting memories.</p>
+                </div>
+                <img src="images/friends.jpg" alt="Friends enjoying Duluth" class="center-image">
+                <div class="experience-card">
+                    <h3>Canal Park</h3>
+                    <p>One of my favorite things to do in Duluth is waking up early to catch the sunrise in Canal Park. The sky over Lake Superior turns this mix of orange, pink, and purple, and the sound of the waves hitting the rocks is meditative. It's become something I do to help clear my mind and reminds me why I chose to live and study here.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Lakewalk</h3>
+                    <p>During the summer, the Lakewalk is one of my favorite places to go relax. I love walking along the path while watching ships come into the harbor. On warm evenings, there's often live music playing somewhere nearby, and the air smells like lake breeze and food from Canal Park restaurants. It's the perfect way to end a day, simple, peaceful, and uniquely Duluth.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Superior Hiking Trail</h3>
+                    <p>The first time I hiked the Superior Hiking Trail, I wasn't fully prepared for how beautiful some parts would be. The view from the top overlooking the lake is unreal, it feels like standing on the edge of the world. I go and hike it every chance I get, usually with friends, and every trip brings something new, different weather, new wildlife, or just that quiet peace you can't find anywhere else.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Spirit Mountain</h3>
+                    <p>As someone who loves skiing, Spirit Mountain quickly became one of my favorite spots. It's just minutes from campus, and it's perfect for unwinding after a long week. Some of my best memories are night skiing under the lights with friends, followed by grabbing food downtown. It's one of those classic Duluth experiences that makes winter something to look forward to!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

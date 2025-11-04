@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reece Johnson - Personal Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F0;
+            --text-color: #333333;
+            --accent-color: #2E5D4B;
+            --accent-light: #3B7A62;
+            --border-color: #D3D3D3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--accent-color), #264D3E);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 65px;
+            position: relative;
+            transition: all 0.4s ease;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+            font-size: 3rem;
+            font-weight: 200;
+            line-height: 1;
+            position: relative;
+            color: var(--bg-color);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 2px rgba(0, 0, 0, 0.12),
+                -1px -1px 1px rgba(255, 255, 255, 0.08);
+            background: none;
+            padding: 0;
+            letter-spacing: -1px;
+            opacity: 0.85;
+            filter: brightness(1.05);
+        }
+
+        .nav-brand .name {
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        nav a {
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background: var(--accent-light);
+        }
+
+        /* Profile Section */
+        .profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
+                       0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1),
+                       0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .profile-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: var(--bg-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+                       0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-button:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+                       0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Welcome Video */
+        .welcome-video {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Hobbies Section */
+        .hobbies {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hobby-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .hobby-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        /* Typography */
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile {
+                grid-template-columns: 1fr;
+            }
+
+            .hobbies {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-image {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <div class="logo">
+                    <div class="logo-text">RJ</div>
+                </div>
+                <span class="name">Reece Johnson</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="hobbies.html">Hobbies</a>
+                <a href="resume.html">Resume</a>
+                <a href="career.html">Career</a>
+                <a href="discover.html">Discover</a>
+                <a href="game.html">Game</a>
+            </div>
+        </nav>
+    </header>    <main class="container">
+        <section id="home" class="profile">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <img src="images/headshot.jpeg" alt="Reece Johnson" class="profile-image">
+                <div class="button-container">
+                    <a href="resume.html" class="profile-button">View Resume</a>
+                    <a href="career.html" class="profile-button">Career Journey</a>
+                </div>
+            </div>
+            <div class="profile-content">
+                <h1>Welcome!</h1>
+                <p>Hello! I'm Reece Johnson, and I'm excited to share my journey with you.</p>
+                <p>As a proud Marine Corps veteran with five years of honorable service, I bring a strong foundation of discipline, leadership, and teamwork to everything I do. During my time in the military, I developed the ability to adapt quickly, make sound decisions under pressure, and lead diverse teams toward shared goals. These experiences taught me the importance of accountability, integrity, and perseverance—qualities that I now apply to my academic and professional pursuits.</p>
+                <p>Currently, I am pursuing a degree in Business Analytics to build upon my leadership background and develop expertise in data-driven decision-making, process improvement, and strategic problem-solving. My goal is to combine my military experience with analytical and technical skills to help organizations make smarter, more informed business decisions. I'm motivated to make a positive impact in the business world by bringing the same level of dedication, focus, and work ethic that defined my service in the Marine Corps.</p>
+            </div>
+        </section>
+
+        <section class="welcome-video">
+            <h2>Personal Introduction</h2>
+            <video controls>
+                <source src="videos/welcome.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <section id="hobbies" class="hobbies">
+            <div class="hobby-card">
+                <img src="images/hobby1.jpeg" alt="Skiing" class="hobby-image">
+                <p>Skiing has become my ultimate winter passion, offering the perfect blend of adrenaline and serenity as I carve through fresh powder on mountain slopes. The combination of technical skill and physical challenge keeps me constantly engaged and learning, while the breathtaking mountain views provide a peaceful escape from everyday life. What I love most about skiing is how it brings together friends and family for memorable adventures in nature's winter wonderland.</p>
+            </div>
+            <div class="hobby-card">
+                <img src="images/hobby2.jpeg" alt="Golf" class="hobby-image">
+                <p>Golf represents the perfect combination of mental strategy and physical precision that challenges me to constantly improve and refine my skills. I find immense satisfaction in the game's demand for patience and focus, as each shot requires careful consideration and execution. The sport also provides an excellent opportunity for networking and building relationships while enjoying the tranquility of beautifully maintained courses.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Function to load text content from files
+        async function loadTextContent(filePath, elementId) {
+            try {
+                const response = await fetch(filePath);
+                const text = await response.text();
+                document.getElementById(elementId).textContent = text;
+            } catch (error) {
+                console.error('Error loading content:', error);
+            }
+        }
+
+        // Load content when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTextContent('files/Professional_Introduction.docx', 'professional-intro');
+            loadTextContent('files/Hobby_Summaries.docx', 'hobby1-content');
+            loadTextContent('files/Hobby_Summaries.docx', 'hobby2-content');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Game - Reece Johnson</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F0;
+            --text-color: #333333;
+            --accent-color: #2E5D4B;
+            --accent-light: #3B7A62;
+            --border-color: #cccccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--accent-color), #264D3E);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 65px;
+            position: relative;
+            transition: all 0.4s ease;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+            font-size: 3rem;
+            font-weight: 200;
+            line-height: 1;
+            position: relative;
+            color: var(--bg-color);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 2px rgba(0, 0, 0, 0.12),
+                -1px -1px 1px rgba(255, 255, 255, 0.08);
+            background: none;
+            padding: 0;
+            letter-spacing: -1px;
+            opacity: 0.85;
+            filter: brightness(1.05);
+        }
+
+        .nav-brand .name {
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        nav a {
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background: var(--accent-light);
+        }
+
+        .game-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .game-input {
+            padding: 10px;
+            font-size: 18px;
+            width: 200px;
+            margin: 10px;
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        .game-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .game-button:hover {
+            background-color: var(--accent-light);
+        }
+
+        .game-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #message {
+            margin: 20px 0;
+            font-size: 18px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        #score {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .rules {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .score-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .score-box {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .score-box p {
+            margin: 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .score-box span {
+            display: block;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .hint-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 2px solid var(--accent-light);
+        }
+
+        #currentHint {
+            font-size: 18px;
+            margin: 10px 0;
+            min-height: 2em;
+        }
+
+        .hint-counter {
+            font-size: 14px;
+            color: var(--accent-color);
+            margin-top: 10px;
+        }
+
+        .guess-section {
+            margin: 20px 0;
+        }
+
+        .restart-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .restart-button {
+            background-color: #d23;
+            transition: background-color 0.3s;
+        }
+
+        .restart-button:hover {
+            background-color: #e34;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <div class="logo">
+                    <div class="logo-text">RJ</div>
+                </div>
+                <span class="name">Reece Johnson</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="hobbies.html">Hobbies</a>
+                <a href="resume.html">Resume</a>
+                <a href="career.html">Career</a>
+                <a href="discover.html">Discover</a>
+                <a href="game.html">Game</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="game-container">
+            <h1>Minnesota Trivia</h1>
+            
+            <div class="rules">
+                <h3>Rules:</h3>
+                <ul>
+                    <li>Try to guess the word based on the hints provided</li>
+                    <li>You can reveal up to 3 hints one at a time</li>
+                    <li>Score more points by using fewer hints!</li>
+                    <li>3 points for guessing with 1 hint</li>
+                    <li>2 points for guessing with 2 hints</li>
+                    <li>1 point for guessing with 3 hints</li>
+                </ul>
+            </div>
+
+            <div class="score-section">
+                <div class="score-box">
+                    <p>Total Score</p>
+                    <span id="totalScore">0</span>
+                </div>
+                <div class="score-box">
+                    <p>Words Solved</p>
+                    <span id="wordsSolved">0</span>
+                </div>
+            </div>
+
+            <div class="hint-section">
+                <p id="currentHint">Click "Show Hint" to get started!</p>
+                <button onclick="showNextHint()" class="game-button" id="hintButton">Show Hint</button>
+                <p class="hint-counter">Hints used: <span id="hintCount">0</span>/3</p>
+            </div>
+
+            <div class="guess-section">
+                <input type="text" id="guessInput" class="game-input" placeholder="Enter guess">
+                <button onclick="checkGuess()" class="game-button">Guess!</button>
+                <button onclick="resetGame()" class="game-button">Next Word</button>
+            </div>
+
+            <p id="message">Ready to play? Start by revealing a hint!</p>
+            
+            <div class="restart-section">
+                <button onclick="restartGame()" class="game-button restart-button">Restart Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const words = [
+            {
+                word: 'MINNEAPOLIS',
+                hints: [
+                    'Minnesota\'s largest city',
+                    'Home to the Mall of America',
+                    'Known as one half of the Twin Cities'
+                ]
+            },
+            {
+                word: 'VIKINGS',
+                hints: [
+                    'NFL team based in Minnesota',
+                    'Play at U.S. Bank Stadium',
+                    'Their mascot is Viktor'
+                ]
+            },
+            {
+                word: 'MAYO',
+                hints: [
+                    'Famous clinic in Rochester',
+                    'World-renowned medical center',
+                    'Founded by two brothers in 1889'
+                ]
+            },
+            {
+                word: 'BOUNDARY WATERS',
+                hints: [
+                    'Waters between Minnesota and Canada',
+                    'Popular canoeing destination',
+                    'Protected wilderness area'
+                ]
+            },
+            {
+                word: 'PRINCE',
+                hints: [
+                    'Famous musician from Minnesota',
+                    'Paisley Park is his former estate',
+                    'Known for "Purple Rain"'
+                ]
+            },
+            {
+                word: 'LOON',
+                hints: [
+                    'Minnesota\'s state bird',
+                    'Also a soccer team name',
+                    'Known for their distinctive call'
+                ]
+            },
+            {
+                word: 'WALLEYE',
+                hints: [
+                    'Minnesota\'s state fish',
+                    'Popular target for ice fishing',
+                    'Found in many Minnesota lakes'
+                ]
+            },
+            {
+                word: 'TWINS',
+                hints: [
+                    'MLB team in Minnesota',
+                    'Play at Target Field',
+                    'Won World Series in 1987 and 1991'
+                ]
+            },
+            {
+                word: 'BEMIDJI',
+                hints: [
+                    'City known for Paul Bunyan statue',
+                    'First city on the Mississippi River',
+                    'Home to a state university'
+                ]
+            },
+            {
+                word: 'MALL OF AMERICA',
+                hints: [
+                    'America\'s largest shopping center',
+                    'Located in Bloomington',
+                    'Has its own indoor theme park'
+                ]
+            },
+            {
+                word: 'ITASCA',
+                hints: [
+                    'State park where the Mississippi begins',
+                    'Contains Lake Itasca',
+                    'You can walk across the mighty river here'
+                ]
+            },
+            {
+                word: 'WILD',
+                hints: [
+                    'NHL team in Minnesota',
+                    'Play in St. Paul',
+                    'Replaced the North Stars'
+                ]
+            }
+        ];
+
+        let currentWord;
+        let hintsRevealed = 0;
+        let totalScore = 0;
+        let wordsSolved = 0;
+        let usedWords = new Set();
+        
+        function initGame() {
+            // Filter out words that haven't been used yet
+            const availableWords = words.filter(w => !usedWords.has(w.word));
+            
+            // If all words have been used, reset the used words
+            if (availableWords.length === 0) {
+                usedWords.clear();
+                currentWord = words[Math.floor(Math.random() * words.length)];
+            } else {
+                currentWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+            }
+            
+            usedWords.add(currentWord.word);
+            hintsRevealed = 0;
+            document.getElementById('hintCount').textContent = '0';
+            document.getElementById('currentHint').textContent = 'Click "Show Hint" to get started!';
+            document.getElementById('message').textContent = 'Ready to play? Start by revealing a hint!';
+            document.getElementById('guessInput').value = '';
+            document.getElementById('guessInput').disabled = false;
+            document.getElementById('hintButton').disabled = false;
+        }
+        
+        function showNextHint() {
+            if (hintsRevealed < 3) {
+                hintsRevealed++;
+                document.getElementById('hintCount').textContent = hintsRevealed;
+                document.getElementById('currentHint').textContent = currentWord.hints[hintsRevealed - 1];
+                
+                if (hintsRevealed === 3) {
+                    document.getElementById('hintButton').disabled = true;
+                }
+            }
+        }
+        
+        function checkGuess() {
+            const guess = document.getElementById('guessInput').value.trim().toUpperCase();
+            const messageElement = document.getElementById('message');
+            
+            if (!guess) {
+                messageElement.textContent = 'Please enter a guess!';
+                return;
+            }
+            
+            if (guess === currentWord.word) {
+                const pointsEarned = 4 - hintsRevealed;
+                totalScore += pointsEarned;
+                wordsSolved++;
+                document.getElementById('totalScore').textContent = totalScore;
+                document.getElementById('wordsSolved').textContent = wordsSolved;
+                messageElement.textContent = `Correct! You earned ${pointsEarned} points! Click "Next Word" to continue.`;
+                document.getElementById('guessInput').disabled = true;
+                document.getElementById('hintButton').disabled = true;
+            } else {
+                messageElement.textContent = 'Not quite right. Try again!';
+            }
+            
+            document.getElementById('guessInput').value = '';
+        }
+        
+        function resetGame() {
+            initGame();
+        }
+
+        function restartGame() {
+            totalScore = 0;
+            wordsSolved = 0;
+            usedWords.clear();
+            document.getElementById('totalScore').textContent = '0';
+            document.getElementById('wordsSolved').textContent = '0';
+            initGame();
+        }
+
+        // Allow Enter key to submit guess
+        document.getElementById('guessInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkGuess();
+            }
+        });
+
+        // Initialize the game
+        initGame();
+    </script>
+</body>
+</html>

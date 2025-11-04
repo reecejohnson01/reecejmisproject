@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career - Reece Johnson</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F0;
+            --text-color: #333333;
+            --accent-color: #2E5D4B;
+            --accent-light: #3B7A62;
+            --border-color: #D3D3D3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        header {
+            background: linear-gradient(to bottom, var(--accent-color), #264D3E);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 65px;
+            position: relative;
+            transition: all 0.4s ease;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+            font-size: 3rem;
+            font-weight: 200;
+            line-height: 1;
+            position: relative;
+            color: var(--bg-color);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 2px rgba(0, 0, 0, 0.12),
+                -1px -1px 1px rgba(255, 255, 255, 0.08);
+            background: none;
+            padding: 0;
+            letter-spacing: -1px;
+            opacity: 0.85;
+            filter: brightness(1.05);
+        }
+
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; margin-left: auto; }
+        nav a { color: var(--bg-color); text-decoration: none; padding: 0.5rem 0.75rem; transition: all 0.3s ease; border-radius: 4px; }
+        nav a:hover { background: var(--accent-light); }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 2rem; 
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .intro-section h1 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .company-name {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+
+        .company-logo {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
+            margin-left: auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-logo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            mix-blend-mode: multiply;
+        }
+
+        .contact-info {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .skill-tag {
+            background: var(--accent-light);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(45deg, var(--accent-light), var(--accent-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <div class="logo"><div class="logo-text">RJ</div></div>
+                <span class="name">Reece Johnson</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="hobbies.html">Hobbies</a>
+                <a href="resume.html">Resume</a>
+                <a href="career.html">Career</a>
+                <a href="discover.html">Discover</a>
+                <a href="game.html">Game</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="intro-section">
+            <h1>Career Aspirations</h1>
+            <p>Exploring opportunities that align with my passion for business analytics and technology.</p>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header">
+                <h2 class="company-name">Cirrus Aircraft</h2>
+                <div class="company-logo">
+                    <img src="images/cirrus.jpg" alt="Cirrus Aircraft Logo">
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Company Contact Information</h3>
+                <p>Cirrus Aircraft Headquarters</p>
+                <p>4515 Taylor Circle, Duluth, MN 55811</p>
+                <p>Phone: (218) 727-2737</p>
+                <p>Website: <a href="https://cirrusaircraft.com/careers" target="_blank">cirrusaircraft.com/careers</a></p>
+            </div>
+
+            <div class="position-section">
+                <h3 class="section-title">Desired Role: Business Systems Analyst</h3>
+                <div class="highlight-box">
+                    <p>Cirrus Aircraft represents the perfect blend of innovation and analytics in aviation. Their commitment to technological advancement and data-driven decision-making in aircraft manufacturing aligns perfectly with my analytical skills and interest in cutting-edge technology.</p>
+                </div>
+
+                <h4 class="section-title">Why This Opportunity?</h4>
+                <ul>
+                    <li>Located in Duluth with strong ties to the local community</li>
+                    <li>Industry leader in aviation technology and innovation</li>
+                    <li>Opportunity to apply analytics in a dynamic manufacturing environment</li>
+                    <li>Strong focus on safety and continuous improvement</li>
+                </ul>
+
+                <h4 class="section-title">My Qualifications</h4>
+                <ul>
+                    <li>Strong analytical background through business analytics program</li>
+                    <li>Experience with process optimization and data analysis</li>
+                    <li>Military background with attention to detail and safety protocols</li>
+                    <li>Proven track record in team leadership and project management</li>
+                </ul>
+
+                <h4 class="section-title">Relevant Skills</h4>
+                <div class="skills-list">
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Process Optimization</span>
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Quality Control</span>
+                    <span class="skill-tag">System Analysis</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="company-card">
+            <div class="company-header">
+                <h2 class="company-name">Target Corporation</h2>
+                <div class="company-logo">
+                    <img src="images/target.png" alt="Target Corporation Logo">
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Company Contact Information</h3>
+                <p>Target Corporation Headquarters</p>
+                <p>1000 Nicollet Mall, Minneapolis, MN 55403</p>
+                <p>Phone: (612) 304-6073</p>
+                <p>Website: <a href="https://corporate.target.com/careers" target="_blank">corporate.target.com/careers</a></p>
+            </div>
+
+            <div class="position-section">
+                <h3 class="section-title">Desired Role: Business Analyst Intern</h3>
+                <div class="highlight-box">
+                    <p>Target's commitment to data-driven decision making and innovative retail solutions aligns perfectly with my career goals in business analytics. Their leadership in retail technology and commitment to employee development makes it an ideal place to start my career.</p>
+                </div>
+
+                <h4 class="section-title">Why This Opportunity?</h4>
+                <ul>
+                    <li>Strong presence in Minnesota with opportunities for local career growth</li>
+                    <li>Known for innovative use of data analytics in retail operations</li>
+                    <li>Excellent training and development programs for new professionals</li>
+                    <li>Culture of innovation and continuous improvement</li>
+                </ul>
+
+                <h4 class="section-title">My Qualifications</h4>
+                <ul>
+                    <li>Strong analytical skills developed through business analytics coursework</li>
+                    <li>Experience with data analysis and visualization tools</li>
+                    <li>Leadership experience from military service</li>
+                    <li>Strong background in team collaboration and project management</li>
+                </ul>
+
+                <h4 class="section-title">Relevant Skills</h4>
+                <div class="skills-list">
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Business Intelligence</span>
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
+

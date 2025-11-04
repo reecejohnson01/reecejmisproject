@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies - Reece Johnson</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F0;
+            --text-color: #333333;
+            --accent-color: #2E5D4B;
+            --accent-light: #3B7A62;
+            --border-color: #D3D3D3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, var(--accent-color), #264D3E);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 65px;
+            position: relative;
+            transition: all 0.4s ease;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+            font-size: 3rem;
+            font-weight: 200;
+            line-height: 1;
+            position: relative;
+            color: var(--bg-color);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 2px rgba(0, 0, 0, 0.12),
+                -1px -1px 1px rgba(255, 255, 255, 0.08);
+            background: none;
+            padding: 0;
+            letter-spacing: -1px;
+            opacity: 0.85;
+            filter: brightness(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        nav a {
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background: var(--accent-light);
+        }
+
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hobby-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
+                       0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .hobby-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hobby-title {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .hobby-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-image.skiing-image {
+            object-position: center 33%;
+        }
+
+        .hobby-image.golf-hole-image {
+            object-position: center 25%;
+        }
+
+        .hobby-image:hover {
+            transform: scale(1.02);
+        }
+
+        .story-box {
+            background: var(--bg-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .importance-section {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent-light);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <div class="logo">
+                    <div class="logo-text">RJ</div>
+                </div>
+                <span class="name">Reece Johnson</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="hobbies.html">Hobbies</a>
+                <a href="resume.html">Resume</a>
+                <a href="career.html">Career</a>
+                <a href="discover.html">Discover</a>
+                <a href="game.html">Game</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Skiing Section -->
+        <section class="hobby-section">
+            <div class="hobby-header">
+                <h2 class="hobby-title">Alpine Skiing</h2>
+            </div>
+            <div class="hobby-gallery">
+                <img src="images/hobby1.jpeg" alt="Skiing on powder snow" class="hobby-image skiing-image">
+            </div>
+            <div class="story-box">
+                <h3>A Memorable Run</h3>
+                <p>My favorite memory from alpine skiing was the first time I successfully made it down a real black diamond run. It was a freezing cold morning at Mont Tremblant in Quebec, and I remember standing at the top of the slope feeling terrified. The run was steeper and faster than anything I had tried before, and the snow was fast that day. I took a deep breath, swallowed my fear, and pushed off, I could feel my skis carve smoothly into the snow, the wind rushing past my face, and my confidence growing with every movement. By the time I reached the bottom, my heart was racing, and I couldn't stop smiling.</p>
+                <p>That moment stands out because it was a personal breakthrough. I had overcame my fears and pushed myself beyond my comfort zone, I proved to myself that I was capable of hitting the harder runs if I had the confidence to do so. The sense of accomplishment I felt at the bottom of that run was unlike anything else; it's a constant reminder of why I love skiing so much. It's not just about speed or skill; it's about challenge, growth, and the pure joy of being surrounded by the beauty of the mountains.</p>
+            </div>
+
+            <div class="importance-section">
+                <h3>Why Skiing Matters to Me</h3>
+                <p>Skiing is my go-to winter passion because it combines adrenaline, skill, and the beauty of nature all at once. I remember my first real run down a steep slope—it was both terrifying and exhilarating, but by the end, I couldn't stop smiling. I didn't want the run to stop so I kept taking the lift to the top and trying different and harder runs than the last. The feeling of gliding through fresh powder with snowflakes falling around me is unmatched. Each trip to the mountain is an adventure, from riding the lift with friends to carving turns down wide, open trails. Skiing is important to me because it connects me to the outdoors and gives me a sense of freedom that's hard to find elsewhere. It also pushes me to face challenges head-on, improve my technique, and embrace the rush of going outside my comfort zone. Every winter, I look forward to those moments on the slopes where everything else fades away, and it's just me, the mountain, and the motion.</p>
+                <div class="quote">"A pair of skis are the ultimate transportation to freedom" - Warren Miller</div>
+            </div>
+        </section>
+
+        <!-- Golf Section -->
+        <section class="hobby-section">
+            <div class="hobby-header">
+                <h2 class="hobby-title">Golf</h2>
+            </div>
+            <div class="hobby-gallery">
+                <img src="images/hobby2.jpeg" alt="Golf swing" class="hobby-image">
+                <img src="images/hobby3.jpeg" alt="Golf course" class="hobby-image golf-hole-image">
+            </div>
+            <div class="story-box">
+                <h3>The Perfect Round</h3>
+                <p>One of my favorite memories from golf was one of the first times I played a full 18-holes. It was a beautiful summer morning, and I was out on the course with a few friends. For the first few holes, my shots were inconsistent—I was slicing drives and missing easy putts—but I stayed patient and focused on improving with each swing. Then, on the back nine, I hit one of the best drives of my life. The ball sailed straight down the fairway and landed right in the middle setting up an easy layup shot. I followed it up with a clean wedge onto the green and sank an easy putt for birdie. The feeling of watching that putt drop was unforgettable, it was my first ever birdie!</p>
+                <p>What made the moment special wasn't just the score, it was the sense of progress, the feeling that comes from seeing hard work pay off. My friends cheered, and we all laughed about how I'd been struggling just an hour earlier. That round is a reminder of why I love golf so much: it's a game of patience, persistence, and small victories that build over time.</p>
+            </div>
+
+            <div class="importance-section">
+                <h3>Why Golf Matters to Me</h3>
+                <p>While I didn't grow up golfing it has quickly become one of my favorite hobbies. It challenges me both mentally and physically while giving me a chance to spend time outdoors. I love the feeling of stepping onto the course early in the morning when the grass is still covered in dew and the air is calm. Every hole presents a new puzzle to solve—choosing the right club, judging distance, and adjusting for wind or slope. Golf is important to me because it helps me stay grounded and focused. It teaches me to control my emotions, think strategically, and enjoy steady improvement over time. Whether I'm playing a solo round or golfing with friends, it's a way for me to unwind, reflect, and challenge myself at the same time.</p>
+                <div class="quote">"Golf is about how well you accept, respond to, and score with your misses much more so than it is a game of your perfect shots." - Dr. Bob Rotella</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
