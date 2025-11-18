@@ -192,18 +192,8 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Responsive header adjustments for small screens */
-        @media (max-width: 700px) {
-            header { padding: 0.5rem 0; }
-            nav { padding: 0 1rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .nav-brand { font-size: 1.1rem; margin-right: 0; gap: 0.5rem; }
-            .logo { width: 56px; height: 46px; }
-            .logo-text { font-size: 2.2rem; }
-            .nav-links { width: 100%; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-left: 0; }
-            nav a { padding: 0.35rem 0.5rem; font-size: 0.95rem; }
-            body { padding-top: 110px; }
-        }
     </style>
+    <link rel="stylesheet" href="CSS/header-responsive.css">
 </head>
 <body>
     <header>
@@ -214,7 +204,12 @@
                 </div>
                 <span class="name">Reece Johnson</span>
             </div>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div id="navLinks" class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="hobbies.html">Hobbies</a>
                 <a href="resume.html">Resume</a>
@@ -269,5 +264,7 @@
             </div>
         </section>
     </main>
+
+    <script src="JS/header.js"></script>
 </body>
 </html>

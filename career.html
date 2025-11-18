@@ -35,17 +35,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
-        /* Responsive header adjustments for small screens */
-        @media (max-width: 700px) {
-            header { padding: 0.5rem 0; }
-            nav { padding: 0 1rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .nav-brand { font-size: 1.1rem; margin-right: 0; gap: 0.5rem; }
-            .logo { width: 56px; height: 46px; }
-            .logo-text { font-size: 2.2rem; }
-            .nav-links { width: 100%; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-left: 0; }
-            nav a { padding: 0.35rem 0.5rem; font-size: 0.95rem; }
-            body { padding-top: 110px; }
-        }
         }
 
         nav {
@@ -278,6 +267,7 @@
                     <li>Opportunity to apply analytics in a dynamic manufacturing environment</li>
                     <li>Strong focus on safety and continuous improvement</li>
                 </ul>
+                <link rel="stylesheet" href="CSS/header-responsive.css">
 
                 <h4 class="section-title">My Qualifications</h4>
                 <ul>
@@ -288,7 +278,12 @@
                 </ul>
 
                 <h4 class="section-title">Relevant Skills</h4>
-                <div class="skills-list">
+                        <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                        <div id="navLinks" class="nav-links">
                     <span class="skill-tag">Data Analysis</span>
                     <span class="skill-tag">Process Optimization</span>
                     <span class="skill-tag">Project Management</span>
@@ -348,5 +343,6 @@
         </div>
 
     </main>
+    <script src="JS/header.js"></script>
 </body>
 </html>
